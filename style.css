@@ -138,10 +138,34 @@ button:hover {
   display: none;
 }
 
-/* COMENTÁRIO: Estilo da tela de pontuação final */
+/* COMENTÁRIO: Modal (janelinha) da pontuação - sobrepõe o conteúdo */
 .score-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* escurecimento por cima do jogo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* fica por cima de tudo */
+}
+
+/* COMENTÁRIO: Conteúdo interno da janela modal */
+.score-content {
+  background-color: #ffffff; /* branco */
+  border: 2px solid #2c6fbb; /* azul */
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
   text-align: center;
-  margin-top: 30px;
+}
+
+/* COMENTÁRIO: Esconde o modal quando ele não está ativo */
+.score-screen.hidden {
+  display: none;
 }
 
 /* COMENTÁRIO: Texto da pontuação final */
