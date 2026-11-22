@@ -1,0 +1,126 @@
+/* COMENTÁRIO: Reset de margens e paddings para não precisar se preocupar com valores padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* COMENTÁRIO: Estilos globais da página (fundo neutro em cinza claro) */
+body {
+  background-color: #f5f5f5; /* cinza bem claro */
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* COMENTÁRIO: Container que centraliza todo o jogo na tela */
+.game-container {
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+}
+
+/* COMENTÁRIO: Título do jogo */
+.title {
+  color: #333333; /* cinza escuro */
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* COMENTÁRIO: Área do card (proporção para o tamanho do card) */
+.card-area {
+  perspective: 1000px; /* cria profundidade para o efeito 3D */
+  width: 100%;
+  height: 350px;
+}
+
+/* COMENTÁRIO: Card que vai girar (frente e verso) */
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* mantém o giro 3D dos filhos */
+  transition: transform 0.6s; /* animação suave de 0.6s ao virar */
+  cursor: pointer; /* indica que o card é clicável */
+}
+
+/* COMENTÁRIO: Estado virado - aplica o giro de 180 graus no card */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* COMENTÁRIO: Face do card (frente e verso) */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* esconde o verso até o card virar */
+  background-color: #ffffff; /* branco */
+  border: 2px solid #2c6fbb; /* azul */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* COMENTÁRIO: Verso do card - precisa girar para aparecer */
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #e8eef7; /* azul bem claro */
+}
+
+/* COMENTÁRIO: Rótulo (Pergunta / Resposta) acima do texto */
+.card-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c6fbb; /* azul */
+  margin-bottom: 15px;
+}
+
+/* COMENTÁRIO: Texto do card (termo ou definição) */
+.card-text {
+  font-size: 24px;
+  color: #333333; /* cinza escuro */
+  text-align: center;
+}
+
+/* COMENTÁRIO: Barra de controles (botões e contador) */
+.controls {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* COMENTÁRIO: Estilo padrão dos botões */
+button {
+  background-color: #2c6fbb; /* azul */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* COMENTÁRIO: Cor do botão ao passar o mouse */
+button:hover {
+  background-color: #1e4f8f;
+}
+
+/* COMENTÁRIO: Estilo do contador de itens */
+#counter {
+  font-size: 18px;
+  color: #333333; /* cinza escuro */
+  font-weight: bold;
+}

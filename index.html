@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- COMENTÁRIO: Configurações básicas da página -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards - Arquitetura Computacional</title>
+
+  <!-- COMENTÁRIO: Importa o estilo do jogo (arquivo style.css) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- COMENTÁRIO: Container principal que centraliza o jogo na tela -->
+  <main class="game-container">
+
+    <!-- COMENTÁRIO: Título da página (pode alterar o texto depois) -->
+    <h1 class="title">Jogo de Flashcards - Arquitetura Computacional</h1>
+
+    <!-- COMENTÁRIO: Área que envolver o card (cria o efeito 3D de giro) -->
+    <section class="card-area">
+      <!-- COMENTÁRIO: Card que vai virar ao ser clicado (frente <-> verso) -->
+      <div class="card" id="card">
+        <!-- COMENTÁRIO: FACE DE FRENTE DO CARD (mostra o termo/ideia) -->
+        <div class="card-face card-front">
+          <p class="card-label">Pergunta</p>
+
+          <!-- AQUI VAI O TEXTO DO ITEM - ALTERAR DEPOIS (FRENTE DO CARD) -->
+          <h2 class="card-text" id="term-text">TEXTO DO ITEM AQUI</h2>
+        </div>
+
+        <!-- COMENTÁRIO: FACE DE VERSO DO CARD (mostra a definição/resposta) -->
+        <div class="card-face card-back">
+          <p class="card-label">Resposta</p>
+
+          <!-- AQUI VAI A EXPLICAÇÃO/DEFINIÇÃO DO ITEM - ALTERAR DEPOIS (VERSO DO CARD) -->
+          <p class="card-text" id="definition-text">DEFINICAO DO ITEM AQUI</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMENTÁRIO: Barra de controles do jogo -->
+    <div class="controls">
+      <!-- COMENTÁRIO: Botão para voltar um item (fica à esquerda) -->
+      <button id="btn-prev">Anterior</button>
+
+      <!-- COMENTÁRIO: Exibe o item atual no total (ex: "1 / 12") -->
+      <span id="counter">1 / 12</span>
+
+      <!-- COMENTÁRIO: Botão para avançar um item (fica à direita) -->
+      <button id="btn-next">Próximo</button>
+    </div>
+  </main>
+
+  <!-- COMENTÁRIO: Importa o script do jogo (arquivo script.js) -->
+  <script src="script.js"></script>
+</body>
+</html>
