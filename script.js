@@ -84,9 +84,16 @@ const definitionText = document.getElementById("definition-text");
 const btnPrev = document.getElementById("btn-prev");
 const btnNext = document.getElementById("btn-next");
 const counter = document.getElementById("counter");
+const btnCorrect = document.getElementById("btn-correct");
+const btnWrong = document.getElementById("btn-wrong");
+const scoreScreen = document.getElementById("score-screen");
+const scoreText = document.getElementById("score-text");
+const btnRestart = document.getElementById("btn-restart");
 
-// COMENTÁRIO: Variável que guarda o índice do card atual na lista (começa em 0)
-let currentIndex = 0;
+// COMENTÁRIO: Variáveis de controle do jogo
+let currentIndex = 0; // COMENTÁRIO: índice do card atual (começa em 0)
+let correctCount = 0; // COMENTÁRIO: contador de acertos
+let wrongCount = 0; // COMENTÁRIO: contador de erros
 
 // COMENTÁRIO: Função que mostra o conteúdo do card conforme o item atual
 function renderCard() {
@@ -100,30 +107,62 @@ function renderCard() {
   counter.textContent = `${currentIndex + 1} / ${flashcards.length}`;
 }
 
-// COMENTÁRIO: Função para voltar um item (com "loop" no final da lista)
+// COMENTÁRIO: Função para voltar um item (sem permitir voltar do primeiro para o último)
 function prevCard() {
-  currentIndex--;
-
-  // COMENTÁRIO: Se passar do primeiro item, volta para o último
-  if (currentIndex < 0) {
-    currentIndex = flashcards.length - 1;
+  // COMENTÁRIO: Se já está no primeiro item, não faz nada
+  if (currentIndex === 0) {
+    return;
   }
+
+  currentIndex--;
 
   renderCard();
   card.classList.remove("flipped"); // COMENTÁRIO: volta a carta para a frente
 }
 
-// COMENTÁRIO: Função para avançar um item (com "loop" no início da lista)
+// COMENTÁRIO: Função para avançar um item (sem permitir ir do último para o primeiro)
 function nextCard() {
-  currentIndex++;
-
-  // COMENTÁRIO: Se passar do último item, volta para o primeiro
-  if (currentIndex >= flashcards.length) {
-    currentIndex = 0;
+  // COMENTÁRIO: Se já está no último item, não faz nada
+  if (currentIndex === flashcards.length - 1) {
+    return;
   }
+
+  currentIndex++;
 
   renderCard();
   card.classList.remove("flipped"); // COMENTÁRIO: volta a carta para a frente
+}
+
+// COMENTÁRIO: Função que mostra a pontuação final com o total de acertos e erros
+function showScore() {
+  scoreText.textContent = `Você acertou ${correctCount} de ${flashcards.length} itens!`;
+  scoreScreen.classList.remove("hidden");
+}
+
+// COMENTÁRIO: Função para reiniciar o jogo
+function restartGame() {
+  currentIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  scoreScreen.classList.add("hidden");
+  renderCard();
+  card.classList.remove("flipped");
+}
+
+// COMENTÁRIO: Função que registra a resposta do usuário (true = acertou, false = errou) e avança
+function handleAnswer(correct) {
+  if (correct) {
+    correctCount++;
+  } else {
+    wrongCount++;
+  }
+
+  // COMENTÁRIO: Se o usuário respondeu o último card, mostra a pontuação final
+  if (currentIndex === flashcards.length - 1) {
+    showScore();
+  } else {
+    nextCard();
+  }
 }
 
 // COMENTÁRIO: Função que inverte a carta (frente <-> verso) ao clicar nela
@@ -137,8 +176,17 @@ btnPrev.addEventListener("click", prevCard);
 // COMENTÁRIO: Evento de clique no botão "Próximo"
 btnNext.addEventListener("click", nextCard);
 
+// COMENTÁRIO: Evento de clique no botão "Acertou" (registra acerto e avança)
+btnCorrect.addEventListener("click", () => handleAnswer(true));
+
+// COMENTÁRIO: Evento de clique no botão "Errou" (registra erro e avança)
+btnWrong.addEventListener("click", () => handleAnswer(false));
+
 // COMENTÁRIO: Evento de clique no card (vira o card para ver a resposta)
 card.addEventListener("click", flipCard);
+
+// COMENTÁRIO: Evento de clique no botão "Reiniciar"
+btnRestart.addEventListener("click", restartGame);
 
 // COMENTÁRIO: Renderiza o primeiro card assim que a página carrega
 renderCard();

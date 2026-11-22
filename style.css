@@ -124,3 +124,39 @@ button:hover {
   color: #333333; /* cinza escuro */
   font-weight: bold;
 }
+
+/* COMENTÁRIO: Estilos da barra de respostas (acerto / erro) */
+.answer-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* COMENTÁRIO: Esconde a tela de pontuação quando ela não está ativa */
+.hidden {
+  display: none;
+}
+
+/* COMENTÁRIO: Estilo da tela de pontuação final */
+.score-screen {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* COMENTÁRIO: Texto da pontuação final */
+#score-text {
+  color: #333333; /* cinza escuro */
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* COMENTÁRIO: Botão de acerto - cor verde */
+#btn-correct {
+  background-color: #2e8b57; /* verde */
+}
+
+/* COMENTÁRIO: Botão de erro - cor vermelha */
+#btn-wrong {
+  background-color: #c0392b; /* vermelho */
+}

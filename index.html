@@ -38,7 +38,7 @@
       </div>
     </section>
 
-    <!-- COMENTÁRIO: Barra de controles do jogo -->
+    <!-- COMENTÁRIO: Barra de controles (botões de navegação) -->
     <div class="controls">
       <!-- COMENTÁRIO: Botão para voltar um item (fica à esquerda) -->
       <button id="btn-prev">Anterior</button>
@@ -49,7 +49,25 @@
       <!-- COMENTÁRIO: Botão para avançar um item (fica à direita) -->
       <button id="btn-next">Próximo</button>
     </div>
+
+    <!-- COMENTÁRIO: Botões de resposta (acerto / erro) -->
+    <div class="answer-controls">
+      <!-- COMENTÁRIO: Botão para registrar que o usuário ACERTOU a resposta -->
+      <button id="btn-correct">Acertou</button>
+
+      <!-- COMENTÁRIO: Botão para registrar que o usuário ERROU a resposta -->
+      <button id="btn-wrong">Errou</button>
+    </div>
   </main>
+
+  <!-- COMENTÁRIO: Tela de pontuação final (escondida até o fim do jogo) -->
+  <div id="score-screen" class="score-screen hidden">
+    <!-- COMENTÁRIO: Texto com a pontuação final (o JS preenche) -->
+    <h2 id="score-text">Pontuação Final</h2>
+
+    <!-- COMENTÁRIO: Botão para reiniciar o jogo -->
+    <button id="btn-restart">Reiniciar</button>
+  </div>
 
   <!-- COMENTÁRIO: Importa o script do jogo (arquivo script.js) -->
   <script src="script.js"></script>
